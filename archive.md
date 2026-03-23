@@ -14,6 +14,7 @@ permalink: /archive/
   <li class="archive-item">
     <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
     <span class="archive-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
+    <small style="color: #999;">({{ post.url | relative_url }})</small>
   </li>
 {% endfor %}
 </ul>

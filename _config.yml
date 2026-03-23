@@ -23,7 +23,10 @@ nav:
 # Markdown processing
 markdown: kramdown
 highlighter: rouge
-permalink: pretty
+
+# Posts - custom permalink structure: /news/YYYY/MM/DD/news/
+permalink: /news/:year/:month/:day/:title/
+posts_dir: "_posts"
 
 # Posts - using Jekyll default _posts directory
 # posts_dir: "news"  # 已移除，使用默认 _posts
