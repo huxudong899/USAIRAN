@@ -38,7 +38,7 @@
 ## 🗞️ 最新简报
 
 {% for post in site.posts limit:3 %}
-- **[{{ post.date | date: "%Y-%m-%d" }}](news/{{ post.date | date: "%Y-%m-%d"}}.md)** - {{ post.title | replace: "美伊战况简报 - ", "" }}
+- **[{{ post.date | date: "%Y-%m-%d" }}]({{ post.url | relative_url }})** - {{ post.title | replace: "美伊战况简报 - ", "" }}
 {% endfor %}
 
 查看 [📋 完整历史存档](archive/) 获取所有过往简报。
