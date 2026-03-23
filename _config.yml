@@ -9,7 +9,7 @@ github_username: "huxudong899"
 lang: "zh-CN"
 
 # Theme
-theme: jekyll-theme-slate
+theme: jekyll-theme-minimal
 
 # Markdown processing
 markdown: kramdown
