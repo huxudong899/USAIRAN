@@ -8,6 +8,9 @@ url: "https://huxudong899.github.io"
 github_username: "huxudong899"
 lang: "zh-CN"
 
+# Theme
+theme: jekyll-theme-cayman
+
 # Markdown processing
 markdown: kramdown
 highlighter: rouge
