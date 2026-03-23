@@ -11,6 +11,15 @@ lang: "zh-CN"
 # Theme
 theme: jekyll-theme-minimal
 
+# Navigation (for minimal theme)
+nav:
+  - title: 首页
+    url: /
+  - title: 存档
+    url: /archive/
+  - title: 关于
+    url: /about/
+
 # Markdown processing
 markdown: kramdown
 highlighter: rouge
