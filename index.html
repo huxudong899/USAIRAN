@@ -1,0 +1,109 @@
+---
+layout: default
+title: 首页
+---
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>🇺🇸 🇮🇷 美伊战况每日简报</h1>
+    <p class="hero-subtitle">自动追踪 · 每日更新 · 多源聚合</p>
+    <p class="hero-description">
+      本网站由 <strong>OpenClaw 自动新闻发布系统</strong> 驱动，<br>
+      每日从 Google News 聚合最新美伊战争相关报道。
+    </p>
+  </div>
+</section>
+
+<!-- Latest News Section -->
+<section class="container">
+  <div class="section-header">
+    <h2>📰 最新简报</h2>
+    <p class="section-description">点击标题阅读完整报道</p>
+  </div>
+  
+  <div class="news-grid">
+    {% for post in site.posts limit: 3 %}
+    <article class="news-card">
+      <header class="news-card-header">
+        <time class="news-date">{{ post.date | date: "%Y-%m-%d" }}</time>
+        {% if forloop.first %}
+        <span class="badge badge-new">最新</span>
+        {% endif %}
+      </header>
+      <h3 class="news-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title | replace: "美伊战况简报 - ", "" }}</a>
+      </h3>
+      <p class="news-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      <footer class="news-card-footer">
+        <a href="{{ post.url | relative_url }}" class="btn-read">阅读全文 →</a>
+      </footer>
+    </article>
+    {% endfor %}
+  </div>
+  
+  <div class="text-center margin-top-2">
+    <a href="/archive/" class="btn btn-outline">查看历史存档</a>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">{{ site.posts | size }}</div>
+        <div class="stat-label">简报数量</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">10+</div>
+        <div class="stat-label">新闻来源</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">自动</div>
+        <div class="stat-label">发布方式</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="container">
+  <div class="about-section">
+    <h2>ℹ️ 关于本项目</h2>
+    <div class="about-content">
+      <p>
+        本网站是 <strong>OpenClaw 自动新闻发布系统</strong> 的演示项目。
+        OpenClaw 是一个 AI Agent 框架，可以自动执行搜索、内容提取、格式化和发布等任务。
+      </p>
+      <p>
+        <strong>技术栈：</strong><br>
+        • 搜索引擎：Google News API<br>
+        • 内容处理：OpenClaw Skills<br>
+        • 网站托管：GitHub Pages (Jekyll)<br>
+        • 自动部署：GitHub Actions / Cron
+      </p>
+      <p>
+        <strong>数据来源：</strong> BBC、Reuters、Associated Press、新华网、财新、Sohu、新浪等主流媒体。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-content">
+      <p>
+        © 2025 <a href="https://github.com/{{ site.github_username }}">{{ site.author }}</a><br>
+        本网站内容仅供研究与参考，不代表任何立场。<br>
+        Powered by <a href="https://openclaw.ai">OpenClaw</a> Auto-Publisher.
+      </p>
+      <p class="footer-tech">
+        <span class="tech-badge">Jekyll</span>
+        <span class="tech-badge">GitHub Pages</span>
+        <span class="tech-badge">OpenClaw</span>
+      </p>
+    </div>
+  </div>
+</footer>

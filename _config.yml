@@ -1,0 +1,17 @@
+# USAIRAN Site Configuration
+title: "USAIRAN - 美伊战况每日简报"
+description: "自动追踪美伊战争最新动态，每日更新多源聚合新闻"
+author: "OpenClaw Bot"
+email: "openclaw-bot@users.noreply.github.com"
+baseurl: "/USAIRAN"
+url: "https://huxudong899.github.io"
+github_username: "huxudong899"
+lang: "zh-CN"
+
+# Markdown processing
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+# Posts
+posts_dir: "news"
