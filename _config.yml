@@ -11,7 +11,7 @@ lang: "zh-CN"
 # Theme
 theme: jekyll-theme-minimal
 
-# Navigation (for minimal theme)
+# Navigation
 nav:
   - title: 首页
     url: /
@@ -25,5 +25,5 @@ markdown: kramdown
 highlighter: rouge
 permalink: pretty
 
-# Posts
-posts_dir: "news"
+# Posts - using Jekyll default _posts directory
+# posts_dir: "news"  # 已移除，使用默认 _posts
