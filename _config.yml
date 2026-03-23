@@ -24,8 +24,8 @@ nav:
 markdown: kramdown
 highlighter: rouge
 
-# Posts - custom permalink structure: /news/YYYY/MM/DD/news/
-permalink: /news/:year/:month/:day/:title/
+# Posts - simple permalink: /news/YYYY-MM-DD-news.html
+permalink: /news/:title.html
 posts_dir: "_posts"
 
 # Posts - using Jekyll default _posts directory
