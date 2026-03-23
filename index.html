@@ -3,74 +3,41 @@ layout: default
 title: 首页
 ---
 
-<div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
-  <header style="text-align: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 2px solid #eaecef;">
-    <h1 style="font-size: 2.5rem; margin-bottom: 10px; color: #1a202c;">🇺🇸 🇮🇷 美伊战况每日简报</h1>
-    <p style="font-size: 1.2rem; color: #718096;">自动追踪 · 每日更新 · 多源聚合</p>
+<div class="container">
+  <header class="site-header" style="text-align: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #eaecef;">
+    <h1 style="font-size: 2.5rem; margin: 0; color: #1a202c;">🇺🇸 🇮🇷 美伊战况每日简报</h1>
+    <p style="font-size: 1.2rem; color: #718096; margin-top: 10px;">自动追踪 · 每日更新 · 多源聚合</p>
   </header>
 
-  <section style="margin-bottom: 60px;">
+  <section style="margin-bottom: 50px;">
     <h2 style="font-size: 1.8rem; margin-bottom: 20px; text-align: center;">📰 最新简报</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-top: 30px;">
+    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; max-width: 800px; margin: 0 auto;">
       {% assign latest_posts = site.posts | slice: 0,3 %}
       {% for post in latest_posts %}
-      <article style="border: 1px solid #eaecef; border-radius: 8px; padding: 20px; transition: all 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid #eaecef; padding-bottom: 8px;">
+      <li style="padding: 16px; background: #f7fafc; border-radius: 8px; border-left: 4px solid #667eea;">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
           <time style="font-size: 0.9rem; color: #718096;">{{ post.date | date: "%Y年%m月%d日" }}</time>
           {% if forloop.first %}
-          <span style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem;">最新</span>
+          <span style="font-size: 0.75rem; background: #667eea; color: white; padding: 2px 8px; border-radius: 4px;">最新</span>
           {% endif %}
         </div>
-        <h3 style="font-size: 1.2rem; margin-bottom: 10px; line-height: 1.4;">
+        <h3 style="font-size: 1.2rem; margin: 0 0 8px 0; line-height: 1.4;">
           <a href="{{ post.url | relative_url }}" style="color: #3182ce; text-decoration: none;">{{ post.title | replace: "美伊战况简报 - ", "" }}</a>
         </h3>
-        <p style="font-size: 0.95rem; color: #4a5568; line-height: 1.6; margin-bottom: 16px;">
+        <div style="font-size: 0.9rem; color: #4a5568;">
           {{ post.content | strip_html | truncate: 120 }}
-        </p>
-        <a href="{{ post.url | relative_url }}" style="display: inline-block; background: #3182ce; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500; transition: background 0.2s;">阅读全文 →</a>
-      </article>
+        </div>
+      </li>
       {% endfor %}
-    </div>
+    </ul>
+    <p style="text-align: center; margin-top: 30px;">
+      <a href="{{ '/archive/' | relative_url }}" style="display: inline-block; padding: 10px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; border: 1px solid #667eea; color: #667eea;">📋 查看完整存档</a>
+    </p>
   </section>
 
-  <div style="text-align: center; margin: 40px 0;">
-    <a href="/archive/" style="display: inline-block; padding: 12px 24px; border-radius: 6px; font-weight: 600; text-decoration: none; border: 2px solid #667eea; color: #667eea;">📋 查看历史存档</a>
-  </div>
-
-  <section style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 40px; border-radius: 12px; margin: 40px 0; text-align: center;">
-    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 30px;">
-      <div style="min-width: 120px;">
-        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 8px;">{{ site.posts | size }}</div>
-        <div style="font-size: 1.1rem; opacity: 0.9;">简报数量</div>
-      </div>
-      <div style="min-width: 120px;">
-        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 8px;">10+</div>
-        <div style="font-size: 1.1rem; opacity: 0.9;">新闻来源</div>
-      </div>
-      <div style="min-width: 120px;">
-        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 8px;">24h</div>
-        <div style="font-size: 1.1rem; opacity: 0.9;">自动更新</div>
-      </div>
-      <div style="min-width: 120px;">
-        <div style="font-size: 2.5rem; font-weight: 700; margin-bottom: 8px;">100%</div>
-        <div style="font-size: 1.1rem; opacity: 0.9;">自动化</div>
-      </div>
-    </div>
-  </section>
-
-  <section style="background: #f7fafc; padding: 30px; border-radius: 12px; margin-top: 40px;">
-    <h2 style="margin-bottom: 20px;">ℹ️ 关于本项目</h2>
-    <p><strong>USAIRAN</strong> 是由 <a href="https://openclaw.ai" style="color: #3182ce;">OpenClaw</a> 驱动的自动化新闻发布系统。</p>
-    <p><strong>技术架构：</strong><br>• 搜索引擎：Google News、Bing News、主流媒体 RSS<br>• 内容处理：AI 驱动的摘要生成<br>• 发布平台：GitHub Pages + Jekyll</p>
-    <p><strong>数据来源：</strong>BBC、Reuters、Associated Press等。</p>
-    <p style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eaecef; font-size: 0.9rem; color: #718096;">Powered by OpenClaw Auto-Publisher</p>
+  <section style="background: #f7fafc; padding: 30px; border-radius: 8px; margin: 40px 0;">
+    <h2 style="margin-top: 0; margin-bottom: 20px; text-align: center;">ℹ️ 关于本系统</h2>
+    <p><strong>USAIRAN</strong> 是由 <a href="https://openclaw.ai" style="color: #3182ce;">OpenClaw</a> 驱动的自动化新闻发布系统。所有新闻均来自公开媒体，每天自动生成。</p>
+    <p>技术：GitHub Pages + Jekyll，自动更新。如有问题请查看 <a href="https://github.com/huxudong899/USAIRAN" style="color: #3182ce;">仓库 README</a> 了解详细说明。</p>
   </section>
 </div>
-
-<style>
-/* 响应式 */
-@media (max-width: 768px) {
-  div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
-}
-a:hover { opacity: 0.9; }
-</style>
