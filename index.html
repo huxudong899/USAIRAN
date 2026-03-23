@@ -1,43 +1,77 @@
----
-layout: default
-title: 首页
----
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🇺🇸 🇮🇷 美伊战况每日简报 | USAIRAN</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #1a202c; background: #fff; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    .header { text-align: center; padding: 40px 0; border-bottom: 1px solid #eaecef; margin-bottom: 40px; }
+    .header h1 { font-size: 2.5rem; margin-bottom: 10px; }
+    .header p { font-size: 1.2rem; color: #718096; }
+    .section-title { font-size: 1.8rem; margin-bottom: 20px; text-align: center; }
+    .news-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-bottom: 40px; }
+    .news-card { border: 1px solid #eaecef; border-radius: 8px; padding: 20px; }
+    .news-card-header { display: flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #eaecef; padding-bottom: 8px; font-size: 0.9rem; color: #718096; }
+    .badge { background: #667eea; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; }
+    .news-card h3 { font-size: 1.2rem; margin: 0 0 10px 0; line-height: 1.4; }
+    .news-card a { color: #3182ce; text-decoration: none; }
+    .news-card a:hover { text-decoration: underline; }
+    .excerpt { font-size: 0.95rem; color: #4a5568; line-height: 1.6; margin-bottom: 16px; }
+    .read-more { display: inline-block; background: #3182ce; color: white; padding: 8px 16px; border-radius: 6px; text-decoration: none; font-weight: 500; }
+    .read-more:hover { background: #2c5282; }
+    .center { text-align: center; margin: 40px 0; }
+    .view-all { display: inline-block; padding: 12px 24px; border: 2px solid #667eea; border-radius: 6px; font-weight: 600; text-decoration: none; color: #667eea; }
+    .view-all:hover { background: #667eea; color: white; }
+    .about { background: #f7fafc; padding: 30px; border-radius: 8px; margin: 40px 0; }
+    .about h2 { margin-top: 0; margin-bottom: 20px; }
+    .about a { color: #3182ce; }
+    .footer { text-align: center; padding: 20px; color: #718096; font-size: 0.9rem; border-top: 1px solid #eaecef; margin-top: 40px; }
+    @media (max-width: 600px) {
+      .header h1 { font-size: 1.8rem; }
+      .news-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>🇺🇸 🇮🇷 美伊战况每日简报</h1>
+      <p>自动追踪 · 每日更新 · 多源聚合</p>
+    </header>
 
-<div class="container">
-  <header class="site-header" style="text-align: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid #eaecef;">
-    <h1 style="font-size: 2.5rem; margin: 0; color: #1a202c;">🇺🇸 🇮🇷 美伊战况每日简报</h1>
-    <p style="font-size: 1.2rem; color: #718096; margin-top: 10px;">自动追踪 · 每日更新 · 多源聚合</p>
-  </header>
+    <section>
+      <h2 class="section-title">📰 最新简报</h2>
+      <div class="news-list">
+        {% assign latest = site.posts | slice: 0,3 %}
+        {% for post in latest %}
+        <article class="news-card">
+          <div class="news-card-header">
+            <time>{{ post.date | date: "%Y年%m月%d日" }}</time>
+            {% if forloop.first %}<span class="badge">最新</span>{% endif %}
+          </div>
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title | replace: "美伊战况简报 - ", "" }}</a></h3>
+          <p class="excerpt">{{ post.content | strip_html | truncate: 120 }}</p>
+          <a class="read-more" href="{{ post.url | relative_url }}">阅读全文 →</a>
+        </article>
+        {% endfor %}
+      </div>
+      <div class="center">
+        <a class="view-all" href="/archive/">📋 查看历史存档</a>
+      </div>
+    </section>
 
-  <section style="margin-bottom: 50px;">
-    <h2 style="font-size: 1.8rem; margin-bottom: 20px; text-align: center;">📰 最新简报</h2>
-    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; max-width: 800px; margin: 0 auto;">
-      {% assign latest_posts = site.posts | slice: 0,3 %}
-      {% for post in latest_posts %}
-      <li style="padding: 16px; background: #f7fafc; border-radius: 8px; border-left: 4px solid #667eea;">
-        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
-          <time style="font-size: 0.9rem; color: #718096;">{{ post.date | date: "%Y年%m月%d日" }}</time>
-          {% if forloop.first %}
-          <span style="font-size: 0.75rem; background: #667eea; color: white; padding: 2px 8px; border-radius: 4px;">最新</span>
-          {% endif %}
-        </div>
-        <h3 style="font-size: 1.2rem; margin: 0 0 8px 0; line-height: 1.4;">
-          <a href="{{ post.url | relative_url }}" style="color: #3182ce; text-decoration: none;">{{ post.title | replace: "美伊战况简报 - ", "" }}</a>
-        </h3>
-        <div style="font-size: 0.9rem; color: #4a5568;">
-          {{ post.content | strip_html | truncate: 120 }}
-        </div>
-      </li>
-      {% endfor %}
-    </ul>
-    <p style="text-align: center; margin-top: 30px;">
-      <a href="{{ '/archive/' | relative_url }}" style="display: inline-block; padding: 10px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; border: 1px solid #667eea; color: #667eea;">📋 查看完整存档</a>
-    </p>
-  </section>
+    <section class="about">
+      <h2>ℹ️ 关于本系统</h2>
+      <p><strong>USAIRAN</strong> 是由 <a href="https://openclaw.ai" target="_blank">OpenClaw</a> 驱动的自动化新闻发布系统。所有新闻均来自公开媒体，每天自动生成。</p>
+      <p>技术：GitHub Pages + Jekyll，自动更新。详细技术文档请参考 <a href="https://github.com/huxudong899/USAIRAN" target="_blank">仓库 README</a>。</p>
+    </section>
 
-  <section style="background: #f7fafc; padding: 30px; border-radius: 8px; margin: 40px 0;">
-    <h2 style="margin-top: 0; margin-bottom: 20px; text-align: center;">ℹ️ 关于本系统</h2>
-    <p><strong>USAIRAN</strong> 是由 <a href="https://openclaw.ai" style="color: #3182ce;">OpenClaw</a> 驱动的自动化新闻发布系统。所有新闻均来自公开媒体，每天自动生成。</p>
-    <p>技术：GitHub Pages + Jekyll，自动更新。如有问题请查看 <a href="https://github.com/huxudong899/USAIRAN" style="color: #3182ce;">仓库 README</a> 了解详细说明。</p>
-  </section>
-</div>
+    <footer class="footer">
+      <p>© 2025 <a href="https://github.com/{{ site.github_username }}">{{ site.author }}</a> | Powered by <a href="https://openclaw.ai">OpenClaw</a></p>
+    </footer>
+  </div>
+</body>
+</html>
