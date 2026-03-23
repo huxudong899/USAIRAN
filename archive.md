@@ -6,8 +6,14 @@ permalink: /archive/
 
 # 历史存档
 
-本页面列出所有已发布的美伊战况简报。
+{% assign posts_count = site.posts | size %}
+<p>📊 共 {{ posts_count }} 篇简报</p>
 
+<ul class="archive-list">
 {% for post in site.posts %}
-- [{{ post.date | date: "%Y-%m-%d" }}]({{ post.url }}) - {{ post.title | replace: "美伊战况简报 - ", "" }}
+  <li class="archive-item">
+    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <span class="archive-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
+  </li>
 {% endfor %}
+</ul>
